@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoboBuddy</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.logo {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: #1e293b;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+select,
+textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 140px;
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #6366f1;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4f46e5;
+}
+
+#response {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: #0f172a;
+    border-radius: 15px;
+    line-height: 1.6;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.feature {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.feature h3 {
+    margin-bottom: 8px;
+}
+
+.feature p {
+    color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🤖 RoboBuddy</div>
+    <div class="subtitle">Ton assistant gaming intelligent</div>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <label for="game">🎮 Choisis ton jeu</label>
+
+        <select id="game">
+            <option>Roblox</option>
+            <option>Blox Fruits</option>
+            <option>Brookhaven</option>
+            <option>Adopt Me</option>
+            <option>Steal a Brainrot</option>
+            <option>Autre jeu</option>
+        </select>
+
+        <label for="question">💬 Ta question</label>
+
+        <textarea id="question"
+        placeholder="Exemple : Comment progresser dans ce jeu ?"></textarea>
+
+        <button onclick="askRobot()">
+            🤖 Demander à RoboBuddy
+        </button>
+
+        <div id="response"></div>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <h3>🤖 IA</h3>
+            <p>Pose tes questions gaming.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🎮 Jeux</h3>
+            <p>Choisis ton jeu préféré.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🚀 Guides</h3>
+            <p>Découvre de nouvelles astuces.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function askRobot() {
+
+    const game = document.getElementById("game").value;
+    const question = document.getElementById("question").value.trim();
+    const response = document.getElementById("response");
+
+    if (question === "") {
+        alert("Écris d'abord ta question !");
+        return;
+    }
+
+    response.style.display = "block";
+
+    response.innerHTML = `
+        🤖 <strong>RoboBuddy</strong><br><br>
+        Tu joues à <strong>${game}</strong>.<br><br>
+        Ta question est :<br>
+        « ${question} »<br><br>
+        🧠 La vraie IA sera connectée dans la prochaine étape !
+    `;
+}
+
+</script>
+
+</body>
+</html>
