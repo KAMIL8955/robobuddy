@@ -3,11 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>RoboBuddy</title>
 
 <style>
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -17,26 +23,49 @@ body {
     color: white;
 }
 
+/* HEADER */
+
 header {
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 45px 20px 25px;
 }
 
 .logo {
-    font-size: 42px;
+    font-size: 45px;
     font-weight: bold;
 }
 
 .subtitle {
     color: #94a3b8;
     font-size: 18px;
+    margin-top: 10px;
 }
 
+/* CONTAINER */
+
 .container {
-    max-width: 800px;
+    max-width: 850px;
     margin: auto;
     padding: 20px;
 }
+
+/* NAVIGATION */
+
+.nav {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.nav button {
+    width: auto;
+    padding: 12px 20px;
+    background: #1e293b;
+}
+
+/* CARDS */
 
 .card {
     background: #1e293b;
@@ -45,6 +74,12 @@ header {
     margin-top: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
+
+.card h2 {
+    margin-top: 0;
+}
+
+/* FORM */
 
 label {
     display: block;
@@ -83,6 +118,8 @@ button:hover {
     background: #4f46e5;
 }
 
+/* RESPONSE */
+
 #response {
     display: none;
     margin-top: 20px;
@@ -91,6 +128,8 @@ button:hover {
     border-radius: 15px;
     line-height: 1.6;
 }
+
+/* FEATURES */
 
 .features {
     display: grid;
@@ -101,9 +140,20 @@ button:hover {
 
 .feature {
     background: #1e293b;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 25px 20px;
+    border-radius: 18px;
     text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    background: #263449;
+}
+
+.feature .emoji {
+    font-size: 38px;
 }
 
 .feature h3 {
@@ -113,87 +163,397 @@ button:hover {
 .feature p {
     color: #94a3b8;
 }
+
+/* GAMES */
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.game {
+    background: #0f172a;
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.game:hover {
+    background: #334155;
+}
+
+/* GUIDES */
+
+.guide {
+    background: #0f172a;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+.guide h3 {
+    margin-top: 0;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #64748b;
+    padding: 40px 20px;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
     <div class="logo">🤖 RoboBuddy</div>
-    <div class="subtitle">Ton assistant gaming intelligent</div>
+
+    <div class="subtitle">
+        Ton assistant gaming intelligent
+    </div>
+
 </header>
+
 
 <div class="container">
 
-    <div class="card">
 
-        <label for="game">🎮 Choisis ton jeu</label>
+    <!-- NAVIGATION -->
 
-        <select id="game">
-            <option>Roblox</option>
-            <option>Blox Fruits</option>
-            <option>Brookhaven</option>
-            <option>Adopt Me</option>
-            <option>Steal a Brainrot</option>
-            <option>Autre jeu</option>
-        </select>
+    <div class="nav">
 
-        <label for="question">💬 Ta question</label>
-
-        <textarea id="question"
-        placeholder="Exemple : Comment progresser dans ce jeu ?"></textarea>
-
-        <button onclick="askRobot()">
-            🤖 Demander à RoboBuddy
+        <button onclick="showSection('ai')">
+            🤖 IA
         </button>
 
-        <div id="response"></div>
+        <button onclick="showSection('games')">
+            🎮 Jeux
+        </button>
+
+        <button onclick="showSection('guides')">
+            🚀 Guides
+        </button>
 
     </div>
+
+
+    <!-- ACCUEIL -->
 
     <div class="features">
 
-        <div class="feature">
-            <h3>🤖 IA</h3>
-            <p>Pose tes questions gaming.</p>
+        <div class="feature" onclick="showSection('ai')">
+
+            <div class="emoji">🤖</div>
+
+            <h3>IA</h3>
+
+            <p>
+                Pose tes questions gaming.
+            </p>
+
         </div>
 
-        <div class="feature">
-            <h3>🎮 Jeux</h3>
-            <p>Choisis ton jeu préféré.</p>
+
+        <div class="feature" onclick="showSection('games')">
+
+            <div class="emoji">🎮</div>
+
+            <h3>Jeux</h3>
+
+            <p>
+                Découvre les jeux disponibles.
+            </p>
+
         </div>
 
-        <div class="feature">
-            <h3>🚀 Guides</h3>
-            <p>Découvre de nouvelles astuces.</p>
+
+        <div class="feature" onclick="showSection('guides')">
+
+            <div class="emoji">🚀</div>
+
+            <h3>Guides</h3>
+
+            <p>
+                Découvre des astuces gaming.
+            </p>
+
         </div>
 
     </div>
 
+
+    <!-- IA -->
+
+    <section id="ai" class="card">
+
+        <h2>🤖 RoboBuddy IA</h2>
+
+        <label for="game">
+            🎮 Choisis ton jeu
+        </label>
+
+        <select id="game">
+
+            <option>Roblox</option>
+
+            <option>Blox Fruits</option>
+
+            <option>Brookhaven</option>
+
+            <option>Adopt Me</option>
+
+            <option>Steal a Brainrot</option>
+
+            <option>Autre jeu</option>
+
+        </select>
+
+
+        <label for="question">
+            💬 Ta question
+        </label>
+
+        <textarea
+            id="question"
+            placeholder="Exemple : Comment progresser dans ce jeu ?">
+        </textarea>
+
+
+        <button onclick="askRobot()">
+
+            🤖 Demander à RoboBuddy
+
+        </button>
+
+
+        <div id="response"></div>
+
+    </section>
+
+
+    <!-- JEUX -->
+
+    <section id="games" class="card">
+
+        <h2>🎮 Jeux</h2>
+
+        <p>
+            Choisis un jeu pour commencer.
+        </p>
+
+
+        <div class="games">
+
+            <div class="game"
+                 onclick="chooseGame('Roblox')">
+
+                🎮
+                <br>
+                Roblox
+
+            </div>
+
+
+            <div class="game"
+                 onclick="chooseGame('Blox Fruits')">
+
+                🍎
+                <br>
+                Blox Fruits
+
+            </div>
+
+
+            <div class="game"
+                 onclick="chooseGame('Brookhaven')">
+
+                🏠
+                <br>
+                Brookhaven
+
+            </div>
+
+
+            <div class="game"
+                 onclick="chooseGame('Adopt Me')">
+
+                🐶
+                <br>
+                Adopt Me
+
+            </div>
+
+
+            <div class="game"
+                 onclick="chooseGame('Steal a Brainrot')">
+
+                🧠
+                <br>
+                Steal a Brainrot
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GUIDES -->
+
+    <section id="guides" class="card">
+
+        <h2>🚀 Guides</h2>
+
+
+        <div class="guide">
+
+            <h3>🎮 Bien commencer sur Roblox</h3>
+
+            <p>
+                Découvre les différents jeux,
+                personnalise ton personnage et
+                explore les expériences disponibles.
+            </p>
+
+        </div>
+
+
+        <div class="guide">
+
+            <h3>🧠 Améliorer son niveau</h3>
+
+            <p>
+                Fixe-toi des objectifs et apprends
+                les mécaniques du jeu que tu joues.
+            </p>
+
+        </div>
+
+
+        <div class="guide">
+
+            <h3>🏆 Devenir meilleur</h3>
+
+            <p>
+                Entraîne-toi régulièrement et utilise
+                les stratégies adaptées à ton jeu.
+            </p>
+
+        </div>
+
+    </section>
+
+
 </div>
+
+
+<footer>
+
+    🤖 RoboBuddy — Gaming assistant
+
+</footer>
+
 
 <script>
 
+/* AFFICHER UNE SECTION */
+
+function showSection(section) {
+
+    const element = document.getElementById(section);
+
+    element.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* CHOISIR UN JEU */
+
+function chooseGame(game) {
+
+    document.getElementById("game").value = game;
+
+    showSection("ai");
+
+    document.getElementById("question").focus();
+
+}
+
+
+/* IA TEMPORAIRE */
+
 function askRobot() {
 
-    const game = document.getElementById("game").value;
-    const question = document.getElementById("question").value.trim();
-    const response = document.getElementById("response");
+    const game =
+        document.getElementById("game").value;
+
+    const question =
+        document.getElementById("question").value.trim();
+
+    const response =
+        document.getElementById("response");
+
 
     if (question === "") {
+
         alert("Écris d'abord ta question !");
+
         return;
+
     }
+
 
     response.style.display = "block";
 
+
     response.innerHTML = `
-        🤖 <strong>RoboBuddy</strong><br><br>
-        Tu joues à <strong>${game}</strong>.<br><br>
-        Ta question est :<br>
-        « ${question} »<br><br>
-        🧠 La vraie IA sera connectée dans la prochaine étape !
+
+        🤖 <strong>RoboBuddy</strong>
+
+        <br><br>
+
+        🎮 Jeu :
+        <strong>${escapeHTML(game)}</strong>
+
+        <br><br>
+
+        💬 Question :
+        <br>
+        « ${escapeHTML(question)} »
+
+        <br><br>
+
+        🧠 RoboBuddy prépare sa réponse...
+
+        <br><br>
+
+        ⚡ La vraie IA sera connectée
+        dans la prochaine étape !
+
     `;
+
+}
+
+
+/* SÉCURISER LE TEXTE */
+
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
 }
 
 </script>
