@@ -46,22 +46,12 @@ p {
     padding: 25px;
     width: 180px;
     cursor: pointer;
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    background: #334155;
 }
 
 .big {
     width: auto;
     cursor: default;
     margin-top: 25px;
-}
-
-.big:hover {
-    transform: none;
 }
 
 select,
@@ -112,6 +102,7 @@ button:hover {
     background: #0f172a;
     border-radius: 10px;
     text-align: left;
+    white-space: normal;
 }
 </style>
 </head>
@@ -125,146 +116,141 @@ button:hover {
 
 <div class="container">
 
-    <!-- ACCUEIL -->
+<div id="home" class="section active">
 
-    <div id="home" class="section active">
+    <div class="menu">
 
-        <div class="menu">
+        <div class="card" onclick="openPage('ai')">
+            <h2>🤖</h2>
+            <h3>IA</h3>
+            <p>Pose tes questions gaming.</p>
+        </div>
 
-            <div class="card" onclick="openPage('ai')">
-                <h2>🤖</h2>
-                <h3>IA</h3>
-                <p>Pose tes questions gaming.</p>
-            </div>
+        <div class="card" onclick="openPage('games')">
+            <h2>🎮</h2>
+            <h3>Jeux</h3>
+            <p>Découvre les jeux.</p>
+        </div>
 
-            <div class="card" onclick="openPage('games')">
-                <h2>🎮</h2>
-                <h3>Jeux</h3>
-                <p>Découvre les jeux.</p>
-            </div>
-
-            <div class="card" onclick="openPage('guides')">
-                <h2>🚀</h2>
-                <h3>Guides</h3>
-                <p>Découvre des astuces.</p>
-            </div>
-
+        <div class="card" onclick="openPage('guides')">
+            <h2>🚀</h2>
+            <h3>Guides</h3>
+            <p>Découvre des astuces.</p>
         </div>
 
     </div>
 
+</div>
 
-    <!-- IA -->
 
-    <div id="ai" class="section">
+<div id="ai" class="section">
 
-        <div class="card big">
+    <div class="card big">
 
-            <h2>🤖 RoboBuddy IA</h2>
+        <h2>🤖 RoboBuddy IA</h2>
 
-            <select id="game">
-                <option>Roblox</option>
-                <option>Blox Fruits</option>
-                <option>Brookhaven</option>
-                <option>Adopt Me</option>
-                <option>Steal a Brainrot</option>
-            </select>
+        <select id="game">
+            <option>Roblox</option>
+            <option>Blox Fruits</option>
+            <option>Brookhaven</option>
+            <option>Adopt Me</option>
+            <option>Steal a Brainrot</option>
+        </select>
 
-            <textarea
-                id="question"
-                placeholder="Écris ta question ici..."></textarea>
+        <textarea
+            id="question"
+            placeholder="Écris ta question ici..."></textarea>
 
-            <button onclick="askAI()">
-                🤖 Demander à RoboBuddy
-            </button>
+        <button onclick="askAI()">
+            🤖 Demander à RoboBuddy
+        </button>
 
-            <div id="answer"></div>
+        <div id="answer"></div>
 
-            <button class="back" onclick="openPage('home')">
-                ← Retour
-            </button>
-
-        </div>
+        <button class="back" onclick="openPage('home')">
+            ← Retour
+        </button>
 
     </div>
 
+</div>
 
-    <!-- JEUX -->
 
-    <div id="games" class="section">
+<div id="games" class="section">
 
-        <div class="card big">
+    <div class="card big">
 
-            <h2>🎮 Jeux</h2>
+        <h2>🎮 Jeux</h2>
 
-            <p>Choisis ton jeu :</p>
+        <p>Choisis ton jeu :</p>
 
-            <button onclick="selectGame('Roblox')">
-                Roblox
-            </button>
+        <button onclick="selectGame('Roblox')">
+            Roblox
+        </button>
 
-            <br><br>
+        <br><br>
 
-            <button onclick="selectGame('Blox Fruits')">
-                Blox Fruits
-            </button>
+        <button onclick="selectGame('Blox Fruits')">
+            Blox Fruits
+        </button>
 
-            <br><br>
+        <br><br>
 
-            <button onclick="selectGame('Brookhaven')">
-                Brookhaven
-            </button>
+        <button onclick="selectGame('Brookhaven')">
+            Brookhaven
+        </button>
 
-            <br><br>
+        <br><br>
 
-            <button onclick="selectGame('Steal a Brainrot')">
-                Steal a Brainrot
-            </button>
+        <button onclick="selectGame('Steal a Brainrot')">
+            Steal a Brainrot
+        </button>
 
-            <br><br>
+        <br><br>
 
-            <button class="back" onclick="openPage('home')">
-                ← Retour
-            </button>
-
-        </div>
+        <button class="back" onclick="openPage('home')">
+            ← Retour
+        </button>
 
     </div>
 
+</div>
 
-    <!-- GUIDES -->
 
-    <div id="guides" class="section">
+<div id="guides" class="section">
 
-        <div class="card big">
+    <div class="card big">
 
-            <h2>🚀 Guides</h2>
+        <h2>🚀 Guides</h2>
 
-            <h3>🎮 Roblox</h3>
-            <p>
-                Explore différents jeux et découvre
-                leurs mécaniques.
-            </p>
+        <h3>🎮 Roblox</h3>
 
-            <h3>🧠 Conseils gaming</h3>
-            <p>
-                Entraîne-toi, découvre les stratégies
-                et améliore ton niveau.
-            </p>
+        <p>
+            Explore différents jeux et découvre
+            leurs mécaniques.
+        </p>
 
-            <h3>🏆 Objectifs</h3>
-            <p>
-                Fixe-toi des objectifs et progresse
-                petit à petit.
-            </p>
+        <h3>🧠 Conseils gaming</h3>
 
-            <button class="back" onclick="openPage('home')">
-                ← Retour
-            </button>
+        <p>
+            Entraîne-toi, découvre les stratégies
+            et améliore ton niveau.
+        </p>
 
-        </div>
+        <h3>🏆 Objectifs</h3>
+
+        <p>
+            Fixe-toi des objectifs et progresse
+            petit à petit.
+        </p>
+
+        <button class="back" onclick="openPage('home')">
+            ← Retour
+        </button>
 
     </div>
+
+</div>
 
 </div>
 
@@ -273,9 +259,7 @@ button:hover {
 
 function openPage(page) {
 
-    let sections = document.querySelectorAll(".section");
-
-    sections.forEach(function(section) {
+    document.querySelectorAll(".section").forEach(function(section) {
         section.classList.remove("active");
     });
 
@@ -297,11 +281,11 @@ function selectGame(game) {
 
 async function askAI() {
 
-    let game = document.getElementById("game").value;
-    let question = document.getElementById("question").value.trim();
-    let answer = document.getElementById("answer");
+    const game = document.getElementById("game").value;
+    const question = document.getElementById("question").value.trim();
+    const answer = document.getElementById("answer");
 
-    if (question === "") {
+    if (!question) {
 
         answer.innerHTML = "❌ Écris une question d'abord !";
 
@@ -330,25 +314,38 @@ async function askAI() {
 
         const data = await response.json();
 
-        if (data.answer) {
+        console.log("Réponse du serveur :", data);
+
+        if (!response.ok) {
 
             answer.innerHTML =
-                "🤖 <b>RoboBuddy :</b><br><br>" +
-                data.answer.replace(/\n/g, "<br>");
+                "❌ <b>Erreur du serveur</b><br><br>" +
+                "Code : " + response.status +
+                "<br><br>" +
+                (data.message || data.error || "Erreur inconnue");
 
-        } else {
-
-            answer.innerHTML =
-                "❌ Une erreur est survenue.";
-
+            return;
         }
+
+        if (!data.answer) {
+
+            answer.innerHTML =
+                "❌ Le serveur n'a pas envoyé de réponse.";
+
+            return;
+        }
+
+        answer.innerHTML =
+            "🤖 <b>RoboBuddy :</b><br><br>" +
+            data.answer.replace(/\n/g, "<br>");
 
     } catch (error) {
 
         console.error(error);
 
         answer.innerHTML =
-            "❌ Impossible de contacter RoboBuddy.";
+            "❌ <b>Impossible de contacter le serveur.</b><br><br>" +
+            error.message;
 
     }
 }
